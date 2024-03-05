@@ -2,32 +2,25 @@ name: Syntax Check
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   syntax-check:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
+        python-version: '3.x'
 
-    - name: Install dependencies
+    - name: Install pycodestyle
+      run: pip install pycodestyle
+
+    - name: Syntax check
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt  # Jeśli masz plik zależności
-
-    - name: Syntax Check
-      run: |
-        # Dodaj tutaj polecenia do weryfikacji składni, na przykład dla Pythona:
-        # black --check .
-        # flake8 .
-        # pylint your_module.py
-
-        # Zastąp 'your_module.py' nazwą pliku lub katalogu, który chcesz sprawdzić.
+        # Polecenie do sprawdzenia zgodności z PEP 8
+        pycodestyle .
