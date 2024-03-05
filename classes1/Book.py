@@ -11,4 +11,3 @@ class Book:
         return 'Książka z ' + self.publication_date + ' autora ' \
                + self.author_name + ' ' + self.author_surname + \
                ' Mająca ' + self.number_of_pages + ' stron'
-
