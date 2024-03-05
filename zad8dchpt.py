@@ -3,6 +3,7 @@ import argparse
 
 from zad7dchpt import Brewery
 
+
 def get_breweries(city=None):
     base_url = 'https://api.openbrewerydb.org/breweries'
     params = {'per_page': 20}
@@ -18,6 +19,7 @@ def get_breweries(city=None):
         print(f"Failed to retrieve data. Status code: {response.status_code}")
         return None
 
+
 def print_breweries():
     parser = argparse.ArgumentParser(description="Fetch brewery information")
     parser.add_argument('--city', help='Filter breweries by city')
@@ -30,5 +32,6 @@ def print_breweries():
     if breweries:
         for brewery in breweries:
             print(brewery)
+
 
 print_breweries()
